@@ -1,0 +1,120 @@
+let
+    Origen = Z6_Origen,
+
+    SoloTablas = Table.SelectRows(
+        Origen,
+        each [Kind] = "Table"
+    ),
+
+    TablaFiltrada = Table.SelectRows(
+        SoloTablas,
+        each [Name] = "Sist_Potencia"
+    ),
+
+    TablaBase =
+        if Table.RowCount(TablaFiltrada) > 0 then
+            TablaFiltrada{0}[Data]
+        else
+            #table({}, {}),
+
+    ColumnasLimpias = Table.TransformColumnNames(
+        TablaBase,
+        each Text.Trim(_)
+    ),
+
+    AgregarSistema = Table.AddColumn(
+        ColumnasLimpias,
+        "Sistema",
+        each "Sistema Potencia",
+        type text
+    ),
+
+    RenombrarColumnas = Table.RenameColumns(
+        AgregarSistema,
+        {
+            {"Día y Hora Local", "Fecha Local"},
+            {"Nivel aceite", "Nivel de aceite"},
+            {"Temp Devanado", "Temperatura Devanado"},
+            {"Temp Aceite", "Temperatura Aceite"}
+        },
+        MissingField.Ignore
+    ),
+
+    CompletarColumnas =
+        List.Accumulate(
+            {
+                "Sistema",
+                "Equipo",
+                "Fecha Local",
+                "Nivel de aceite",
+                "Temperatura Devanado",
+                "Temperatura Aceite",
+                "Silicagel",
+                "Novedades"
+            },
+            RenombrarColumnas,
+            (Estado, Columna) =>
+                if Table.HasColumns(Estado, Columna) then
+                    Estado
+                else
+                    Table.AddColumn(
+                        Estado,
+                        Columna,
+                        each "n/a",
+                        type text
+                    )
+        ),
+
+    OrdenarColumnas = Table.SelectColumns(
+        CompletarColumnas,
+        {
+            "Sistema",
+            "Equipo",
+            "Fecha Local",
+            "Nivel de aceite",
+            "Temperatura Devanado",
+            "Temperatura Aceite",
+            "Silicagel",
+            "Novedades"
+        },
+        MissingField.UseNull
+    ),
+
+    Tipos = Table.TransformColumnTypes(
+        OrdenarColumnas,
+        {
+            {"Sistema", type text},
+            {"Equipo", type text},
+            {"Fecha Local", type date},
+            {"Nivel de aceite", type text},
+            {"Temperatura Devanado", type text},
+            {"Temperatura Aceite", type text},
+            {"Silicagel", type text},
+            {"Novedades", type text}
+        }
+    ),
+
+    // Eliminar únicamente filas sin clave válida
+    FiltrarValidos = Table.SelectRows(
+        Tipos,
+        each
+            [Fecha Local] <> null
+            and [Equipo] <> null
+            and Text.Trim(Text.From([Equipo])) <> ""
+    ),
+
+    // Fijar el orden actual antes de eliminar duplicados
+    TablaBuffer = Table.Buffer(
+        FiltrarValidos
+    ),
+
+    // Conservar una sola fila por equipo y día
+    UnRegistroPorEquipoDia = Table.Distinct(
+        TablaBuffer,
+        {
+            "Equipo",
+            "Fecha Local"
+        }
+    )
+in
+    UnRegistroPorEquipoDia
