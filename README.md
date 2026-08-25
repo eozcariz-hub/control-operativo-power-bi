@@ -128,6 +128,26 @@ Entre las medidas DAX principales se encuentran:
 - Microsoft Power Apps
 - Exportaciones de SAP/Fiori
 
+## Documentación técnica
+
+### Power Query
+
+* [Consolidación de turbinas](docs/power-query/datos-turbinas.pq)
+* [Consolidación de bombas del Ciclo Combinado](docs/power-query/datos-bombas-ciclo.pq)
+* [Sistema de aire del Ciclo Combinado](docs/power-query/datos-aire-ciclo.pq)
+* [Sistema de potencia del Ciclo Combinado](docs/power-query/datos-potencia-ciclo.pq)
+* [Novedades de Ciclo Simple](docs/power-query/tabla-novedades-simple.pq)
+* [Novedades de Ciclo Combinado](docs/power-query/tabla-novedades-ciclo.pq)
+* [Transformación de avisos de SAP Fiori](docs/power-query/datos-avisos-fiori.pq)
+
+### Medidas DAX
+
+* [Control Operativo de Ciclo Simple](docs/dax/medidas-control-operativo-cs.dax)
+* [Control Operativo de Ciclo Combinado](docs/dax/medidas-control-operativo-cc.dax)
+* [Resumen de novedades](docs/dax/medidas-resumen-novedades.dax)
+* [Seguimiento de avisos](docs/dax/medidas-seguimiento-avisos.dax)
+
+
 ## Impacto y beneficios
 
 - Visión centralizada de la información operativa.
