@@ -83,6 +83,38 @@ Incluye:
 - Filtros por fecha, usuario, equipo y estado.
 - Consulta del historial y las respuestas asociadas.
 
+## Capturas de la solución
+
+### Control Operativo de Ciclo Simple
+
+Resumen de los datos obtenidos durante las recorridas de campo realizadas por los Supervisores de Operaciones.
+
+![Control Operativo de Ciclo Simple](imagenes/01-control-operativo-ciclo-simple.png)
+
+### Control Operativo de Ciclo Combinado
+
+Resumen de la inspección de bombas, compresores y transformadores del Ciclo Combinado.
+
+![Control Operativo de Ciclo Combinado](imagenes/02-control-operativo-ciclo-combinado.png)
+
+### Resumen de Novedades
+
+Integración de novedades del Ciclo Simple, Ciclo Combinado y la bitácora de turno.
+
+![Resumen de Novedades](imagenes/03-resumen-novedades.png)
+
+### Seguimiento de Avisos
+
+Seguimiento del estado de los avisos generados por los Supervisores de Operaciones ante problemas detectados en los equipamientos.
+
+![Seguimiento de Avisos](imagenes/04-seguimiento-avisos.png)
+
+### Modelo de datos
+
+Vista general de las tablas, consultas y relaciones utilizadas por la solución.
+
+![Modelo de datos de Power BI](imagenes/05-modelo-datos-general.png)
+
 ## Transformación de datos
 
 Power Query se utiliza para:
