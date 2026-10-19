@@ -83,6 +83,32 @@ Incluye:
 - Filtros por fecha, usuario, equipo y estado.
 - Consulta del historial y las respuestas asociadas.
 
+### Análisis operativo y calidad de datos (actualización de octubre de 2026)
+
+La evolución del tablero incorpora una vista analítica que relaciona novedades operativas, equipos y avisos de mantenimiento, con el objetivo de facilitar el seguimiento y la identificación de patrones.
+
+Incluye:
+
+- Evolución mensual de novedades diferenciadas por origen.
+- Identificación de los diez equipos con mayor cantidad de novedades registradas.
+- Filtros por equipo y origen para explorar la información.
+- Exclusión de categorías generales, como `Planta`, del ranking específico de equipos.
+- Tratamiento de valores sin equipo identificado: se distinguen registros sin equipo aplicable de posibles errores de carga.
+
+La interpretación de los resultados considera las limitaciones de los registros de origen: una novedad sin equipo no necesariamente representa un error.
+
+### Análisis de avisos, consignas e inhibiciones
+
+El seguimiento de avisos se amplió con indicadores para analizar:
+
+- Cantidad de avisos por estado: creados, abiertos, cerrados, rechazados, devueltos y duplicados.
+- Porcentaje de avisos no aceptados, sujeto a la definición operativa del indicador.
+- Avisos próximos a vencer, utilizando una ventana de referencia de 30 días cuando corresponde.
+- Tiempo transcurrido entre la creación y la última modificación, como aproximación al seguimiento del proceso, sin equipararlo automáticamente al tiempo efectivo de resolución.
+- Consignas por instalación e inhibiciones por equipo o instalación.
+
+Las visualizaciones se encuentran sujetas a ajustes y validación durante el uso operativo.
+
 ## Capturas de la solución
 
 ### Control Operativo de Ciclo Simple
@@ -115,6 +141,8 @@ Vista general de las tablas, consultas y relaciones utilizadas por la solución.
 
 ![Modelo de datos de Power BI](imagenes/05-modelo-datos-general.png)
 
+> **Actualización visual pendiente:** las capturas publicadas corresponden a la documentación previa. La nueva vista de análisis se incorporará cuando se disponga de imágenes revisadas y sin información interna sensible.
+
 ## Transformación de datos
 
 Power Query se utiliza para:
@@ -126,6 +154,8 @@ Power Query se utiliza para:
 - Reemplazar errores y valores no disponibles.
 - Eliminar registros duplicados.
 - Consolidar novedades.
+- Combinar novedades de Ciclo Simple, Ciclo Combinado y bitácoras en una estructura de análisis con campos comunes como fecha local, equipo, descripción y origen.
+- Distinguir valores vacíos de equipo y categorías generales para que no distorsionen los rankings.
 - Conservar un único registro por equipo y fecha cuando corresponde.
 - Preparar exportaciones de SAP/Fiori para su análisis.
 
@@ -148,6 +178,12 @@ Entre las medidas DAX principales se encuentran:
 - Novedades de Bitácora.
 - Novedades convertidas en avisos.
 - Avisos por estado de sistema y estado de usuario.
+- Novedades por mes y por origen.
+- Ranking Top 10 de equipos con mayor cantidad de novedades.
+- Porcentaje de avisos no aceptados.
+- Seguimiento de avisos próximos a vencer.
+- Indicadores de seguimiento del tiempo entre creación y última modificación.
+- Distribución de consignas e inhibiciones por equipo o instalación.
 
 ## Tecnologías utilizadas
 
@@ -162,23 +198,20 @@ Entre las medidas DAX principales se encuentran:
 
 ## Documentación técnica
 
-### Power Query
+### Archivos Power Query publicados
 
-* [Consolidación de turbinas](docs/power-query/datos-turbinas.pq)
-* [Consolidación de bombas del Ciclo Combinado](docs/power-query/datos-bombas-ciclo.pq)
-* [Sistema de aire del Ciclo Combinado](docs/power-query/datos-aire-ciclo.pq)
-* [Sistema de potencia del Ciclo Combinado](docs/power-query/datos-potencia-ciclo.pq)
-* [Novedades de Ciclo Simple](docs/power-query/tabla-novedades-simple.pq)
-* [Novedades de Ciclo Combinado](docs/power-query/tabla-novedades-ciclo.pq)
-* [Transformación de avisos de SAP Fiori](docs/power-query/datos-avisos-fiori.pq)
+- [Consolidación de turbinas](docs/power-query/datos-turbinas.pq)
+- [Consolidación de bombas del Ciclo Combinado](docs/power-query/datos-bombas-ciclo.pq)
+- [Sistema de aire del Ciclo Combinado](docs/power-query/datos-aire-ciclo.pq)
+- [Sistema de potencia del Ciclo Combinado](docs/power-query/datos-potencia-ciclo.)
 
-### Medidas DAX
+### Documentación por completar
 
-* [Control Operativo de Ciclo Simple](docs/dax/medidas-control-operativo-cs.dax)
-* [Control Operativo de Ciclo Combinado](docs/dax/medidas-control-operativo-cc.dax)
-* [Resumen de novedades](docs/dax/medidas-resumen-novedades.dax)
-* [Seguimiento de avisos](docs/dax/medidas-seguimiento-avisos.dax)
+- Consultas de consolidación de novedades y tratamiento de avisos de SAP/Fiori.
+- Archivos de referencia de las medidas DAX utilizadas en cada panel.
+- Capturas actualizadas de la vista de análisis, con datos ficticios o anonimizados.
 
+Estos elementos se mencionan como pendientes porque todavía no están disponibles como archivos en este repositorio. No se publican consultas productivas, credenciales ni datos internos.
 
 ## Impacto y beneficios
 
@@ -193,12 +226,12 @@ Entre las medidas DAX principales se encuentran:
 
 ## Estado del proyecto
 
-Primera versión operativa recientemente implementada y actualmente en evaluación y mejora continua.
+Versión operativa publicada, con actualización programada y mejoras incorporadas al análisis de novedades, equipos y avisos. El tablero continúa en evaluación y mejora según su utilización.
 
 ## Próximos pasos
 
 - Validar nuevas reglas de calidad de datos.
 - Optimizar medidas y consultas según el uso real.
 - Ampliar la documentación técnica.
-- Incorporar capturas representativas de los paneles.
+- Incorporar capturas revisadas de la nueva vista analítica y actualizar las existentes cuando corresponda.
 - Evaluar nuevas automatizaciones e implementaciones de inteligencia artificial.
