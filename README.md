@@ -141,7 +141,43 @@ Vista general de las tablas, consultas y relaciones utilizadas por la solución.
 
 ![Modelo de datos de Power BI](imagenes/05-modelo-datos-general.png)
 
-> **Actualización visual pendiente:** las capturas publicadas corresponden a la documentación previa. La nueva vista de análisis se incorporará cuando se disponga de imágenes revisadas y sin información interna sensible.
+### Capturas actualizadas — octubre de 2026
+
+#### Gráficas de Gestión
+
+Indicadores de avisos, evolución mensual de novedades por origen y ranking de equipos con novedades.
+
+![Gráficas de Gestión](imagenes/Imagen%20de%20ChatGPT%2019%20oct%202026%2C%2004_05_18%20p.m.png)
+
+#### Resumen de Novedades
+
+Consolidación de registros operativos con filtros por período, origen y equipo.
+
+![Resumen de Novedades](imagenes/Imagen%20de%20ChatGPT%2019%20oct%202026%2C%2004_05_24%20p.m.png)
+
+#### Seguimiento de Avisos
+
+Consulta de avisos, estados y respuestas asociadas.
+
+![Seguimiento de Avisos](imagenes/Imagen%20de%20ChatGPT%2019%20oct%202026%2C%2004_05_29%20p.m.png)
+
+#### Inhibiciones y Consignas
+
+Consulta de registros, estados y vencimientos de inhibiciones y consignas.
+
+![Inhibiciones y Consignas](imagenes/Imagen%20de%20ChatGPT%2019%20oct%202026%2C%2004_05_35%20p.m.png)
+
+#### Control Operativo de Ciclo Simple
+
+Seguimiento de recorridas, turbinas, transformadores, cargadores de baterías y compresores.
+
+![Control Operativo de Ciclo Simple](imagenes/Imagen%20de%20ChatGPT%2019%20oct%202026%2C%2004_05_40%20p.m.png)
+
+#### Control Operativo de Ciclo Combinado
+
+Seguimiento de recorridas, bombas, transformadores y compresores.
+
+![Control Operativo de Ciclo Combinado](imagenes/Imagen%20de%20ChatGPT%2019%20oct%202026%2C%2004_05_45%20p.m.png)
 
 ## Transformación de datos
 
@@ -209,9 +245,8 @@ Entre las medidas DAX principales se encuentran:
 
 - Consultas de consolidación de novedades y tratamiento de avisos de SAP/Fiori.
 - Archivos de referencia de las medidas DAX utilizadas en cada panel.
-- Capturas actualizadas de la vista de análisis, con datos ficticios o anonimizados.
 
-Estos elementos se mencionan como pendientes porque todavía no están disponibles como archivos en este repositorio. No se publican consultas productivas, credenciales ni datos internos.
+Estos elementos se mencionan como pendientes porque todavía no están disponibles como archivos en este repositorio. Se conservan como pendientes las consultas y medidas aún no disponibles como archivos independientes en el repositorio.
 
 ## Impacto y beneficios
 
@@ -233,5 +268,5 @@ Versión operativa publicada, con actualización programada y mejoras incorporad
 - Validar nuevas reglas de calidad de datos.
 - Optimizar medidas y consultas según el uso real.
 - Ampliar la documentación técnica.
-- Incorporar capturas revisadas de la nueva vista analítica y actualizar las existentes cuando corresponda.
+- Mantener actualizadas las capturas de los paneles cuando se incorporen cambios.
 - Evaluar nuevas automatizaciones e implementaciones de inteligencia artificial.
